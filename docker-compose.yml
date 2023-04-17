@@ -1,0 +1,10 @@
+version: "3.8"
+
+services:
+  bear-care:
+    container_name: bear-care
+    image: bear-care
+    build:
+      context: .
+    ports:
+      - 8080:80

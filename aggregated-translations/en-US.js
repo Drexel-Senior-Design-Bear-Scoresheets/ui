@@ -1,35 +1,89 @@
 'use strict';
 
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  exports.default = void 0;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.messages = exports.locale = exports.areTranslationsLoaded = undefined;
 
-  var _default = {
+var _reactIntl = require('react-intl');
+
+var _en = require('react-intl/locale-data/en');
+
+var _en2 = _interopRequireDefault(_en);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+(0, _reactIntl.addLocaleData)(_en2.default);
+
+var messages = {
   "Terra.AbstractModal.BeginModalDialog": "Begin modal dialog",
   "Terra.AbstractModal.EndModalDialog": "End modal dialog",
   "Terra.actionHeader.back": "Back",
   "Terra.actionHeader.close": "Close",
-  "Terra.actionHeader.close.description": "On Clicking the close button, {text} will be closed",
   "Terra.actionHeader.maximize": "Maximize",
-  "Terra.actionHeader.maximize.description": "On Clicking the maximize button, {text} will be maximized",
   "Terra.actionHeader.minimize": "Minimize",
-  "Terra.actionHeader.minimize.description": "On Clicking the minimize button, {text} will be minimized",
   "Terra.actionHeader.next": "Next",
   "Terra.actionHeader.previous": "Previous",
   "Terra.ajax.error": "This content failed to load.",
-  "Terra.avatar.deceased": "Deceased",
+  "Terra.alert.advisory": "Advisory.",
+  "Terra.alert.alert": "Alert.",
+  "Terra.alert.dismiss": "Dismiss",
+  "Terra.alert.error": "Error.",
+  "Terra.alert.info": "Information.",
+  "Terra.alert.success": "Success.",
+  "Terra.alert.warning": "Warning.",
+  "Terra.form.field.optional": "(optional)",
+  "Terra.form.field.required": "Required",
+  "Terra.form.select.activeOption": "{text} ({index} of {totalOptions}).",
+  "Terra.form.select.add": "Add \"{text}\"",
+  "Terra.form.select.ariaLabel": "Search",
+  "Terra.form.select.clearSelect": "Clear select",
+  "Terra.form.select.defaultDisplay": "- Select -",
+  "Terra.form.select.defaultUsageGuidance": "Use up and down arrow keys to navigate through options. Press enter to select an option.",
+  "Terra.form.select.dimmed": "Dimmed.",
+  "Terra.form.select.disabled": "Disabled.",
+  "Terra.form.select.listOfTotalOptions": "List of options.",
+  "Terra.form.select.maxSelectionHelp": "Limit {text} items.",
+  "Terra.form.select.maxSelectionOption": "Maximum number of {text} items selected",
+  "Terra.form.select.menu": "Menu",
+  "Terra.form.select.mobileButtonUsageGuidance": "Tap to navigate to options.",
+  "Terra.form.select.mobileUsageGuidance": "Swipe right to navigate to options.",
+  "Terra.form.select.multiSelectUsageGuidance": "Enter text or use up and down arrow keys to navigate through options. Press enter to select or unselect an option.",
+  "Terra.form.select.noResults": "No matching results for \"{text}\"",
+  "Terra.form.select.optGroup": "Group {text}",
+  "Terra.form.select.option": "Options",
+  "Terra.form.select.searchUsageGuidance": "Enter text or use up and down arrow keys to navigate through options. Press enter to select an option.",
+  "Terra.form.select.selectCleared": "Select value cleared",
+  "Terra.form.select.selected": "Selected.",
+  "Terra.form.select.selectedText": "{text} Selected. ({index} of {totalOptions}).",
+  "Terra.form.select.unselected": "Unselected.",
+  "Terra.form.select.unselectedText": "{text} Unselected.",
   "Terra.icon.IconConsultInstructionsForUse.title": "Electronic Instructions for Use Icon",
+  "Terra.list.multiSelect": "Multi select list, to select or deselect items, press enter or spacebar",
+  "Terra.list.singleSelect": "Single select list, to select or deselect items, press enter or spacebar",
   "Terra.notification.dialog.error": "Error",
   "Terra.notification.dialog.hazard-high": "Alert",
   "Terra.notification.dialog.hazard-low": "Information",
   "Terra.notification.dialog.hazard-medium": "Warning",
   "Terra.Overlay.loading": "Loading...",
+  "Terra.paginator.first": "First",
+  "Terra.paginator.last": "Last",
+  "Terra.paginator.next": "Next",
+  "Terra.paginator.pageCount": "Page {pageNumber} of {pageNumberTotal}",
+  "Terra.paginator.pageCountWithLabel": "{pageLabel} {pageNumber} of {pageNumberTotal}",
+  "Terra.paginator.pageIndex": "Page {pageNumber}",
+  "Terra.paginator.pageIndexWithLabel": "{pageLabel} {pageNumber}",
+  "Terra.paginator.previous": "Previous",
   "Terra.popup.header.close": "Close",
+  "Terra.searchField.clear": "Clear",
+  "Terra.searchField.search": "Search",
+  "Terra.searchField.submit-search": "Submit Search",
   "Terra.status-view.error": "Error",
   "Terra.status-view.no-data": "No Results",
   "Terra.status-view.no-matching-results": "No Matching Results",
   "Terra.status-view.not-authorized": "Not Authorized",
+  "Terra.switch.switchstatuslabel.off": "Off",
+  "Terra.switch.switchstatuslabel.on": "On",
   "terraApplication.actionMenu.headerCloseButtonLabel": "Close",
   "terraApplication.errorBoundary.defaultErrorMessage": "The system encountered an error: {errorDetails}",
   "terraApplication.navigation.drawerMenu.navigation": "Navigation Items",
@@ -78,4 +132,8 @@
   "terraApplication.workspace.workspaceLabel": "Workspace",
   "terraApplication.workspace.workspaceSettingsLabel": "Workspace Settings"
 };
-  exports.default = _default;
+var areTranslationsLoaded = true;
+var locale = 'en-US';
+exports.areTranslationsLoaded = areTranslationsLoaded;
+exports.locale = locale;
+exports.messages = messages;
