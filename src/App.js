@@ -1,6 +1,9 @@
 import React from 'react';
 import ApplicationBase from 'terra-application/lib/application-base';
-import Header from './Header';
+import Header from './components/Header/Header';
+import HomePage from './pages/HomePage/HomePage';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import AboutPage from './pages/AboutPage/AboutPage';
 
 
 // This value could be sent from the server as well
@@ -11,7 +14,12 @@ const locale = (navigator.languages && navigator.languages[0])
 
 const App = () => (
   <ApplicationBase locale={locale}>
-    <Header />
+    <Router>
+      <Routes>
+        <Route exact path="/" element={<HomePage />} />
+        <Route path="/about" element={<AboutPage />}></Route>
+        </Routes>
+    </Router>
   </ApplicationBase>
 );
 
