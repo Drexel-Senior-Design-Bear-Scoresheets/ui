@@ -1,8 +1,8 @@
 import React from 'react';
 import ApplicationBase from 'terra-application/lib/application-base';
-import Header from './components/Header/Header';
+import { HashRouter as Router, Route, Routes } from 'react-router-dom';
+
 import HomePage from './pages/HomePage/HomePage';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import AboutPage from './pages/AboutPage/AboutPage';
 
 
