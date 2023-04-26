@@ -4,6 +4,8 @@ import { HashRouter as Router, Route, Routes } from 'react-router-dom';
 
 import HomePage from './pages/HomePage/HomePage';
 import AboutPage from './pages/AboutPage/AboutPage';
+import SignUpPage from './pages/SignUpPage/SignUpPage';
+import SignInPage from './pages/SignInPage/SignInPage';
 
 
 // This value could be sent from the server as well
@@ -18,6 +20,8 @@ const App = () => (
       <Routes>
         <Route exact path="/" element={<HomePage />} />
         <Route path="/about" element={<AboutPage />}></Route>
+        <Route path="/signup" element={<SignUpPage />}></Route>
+        <Route path="/signin" element={<SignInPage />}></Route>
         </Routes>
     </Router>
   </ApplicationBase>
