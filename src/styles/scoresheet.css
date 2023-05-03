@@ -1,0 +1,50 @@
+.fade-in {
+    animation: fade-in 0.5s ease;
+  }
+  
+  @keyframes fade-in {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  
+  .ScoreSheetCreator {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    font-family: Arial, sans-serif;
+  }
+  
+  .ScoreSheetCreator p {
+    font-size: 24px;
+    margin: 16px 0;
+  }
+  
+  .ScoreSheetCreator input[type="text"] {
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    width: 300px;
+    margin-bottom: 16px;
+  }
+  
+  .ScoreSheetCreator button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 16px;
+  }
+  
+  .ScoreSheetCreator button:hover {
+    background-color: #3e8e41;
+  }
+  

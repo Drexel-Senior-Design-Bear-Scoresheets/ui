@@ -7,7 +7,13 @@ const HomePage = () => (
     <div>
         <ActionHeader title='This is the home page.' />
         <Link to="/about">About Page</Link>
+
+        <ActionHeader title='This is the scoresheet page' />
+        <Link to="/scoresheet">Scoresheet Page</Link>
     </div>
+
+    
+    
 );
 
 export default HomePage;
