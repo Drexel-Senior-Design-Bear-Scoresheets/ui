@@ -36,6 +36,7 @@
     "@cerner/jest-config-terra": "^1.0.0",
     "@cerner/stylelint-config-terra": "^4.1.0",
     "@cerner/terra-aggregate-translations": "^2.2.0",
+    "@cerner/terra-core-docs": "^1.27.0",
     "@cerner/terra-docs": "^1.6.0",
     "@cerner/webpack-config-terra": "^3.0.1",
     "@testing-library/react": "^12.1.5",

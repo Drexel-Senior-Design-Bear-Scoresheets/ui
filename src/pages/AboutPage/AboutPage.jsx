@@ -22,7 +22,7 @@ class AboutPage extends React.Component {
   render() {
     return (
       <div>
-        <ActionHeader title="This is the about page." />
+        <ActionHeader title="This is the page." />
         <Grid.Row>
           <Grid.Column tiny={6}>
             <Link to="/">Home Page</Link>
