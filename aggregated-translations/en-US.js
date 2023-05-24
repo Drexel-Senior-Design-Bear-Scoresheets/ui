@@ -32,6 +32,7 @@ var messages = {
   "Terra.alert.info": "Information.",
   "Terra.alert.success": "Success.",
   "Terra.alert.warning": "Warning.",
+  "Terra.avatar.deceased": "Deceased",
   "Terra.form.field.optional": "(optional)",
   "Terra.form.field.required": "Required",
   "Terra.form.select.activeOption": "{text} ({index} of {totalOptions}).",
