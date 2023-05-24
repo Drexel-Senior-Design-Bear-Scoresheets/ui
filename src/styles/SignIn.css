@@ -90,13 +90,11 @@ body {
     color: rgb(50, 50, 50);
     text-decoration: none;
     font-weight: 600;
-    font-size: smaller;
   }
 
   .link:hover{
     color: rgb(150, 150, 150);
     text-decoration: underline;
-    font-size: small;
   }
 
   .haveAccount {
