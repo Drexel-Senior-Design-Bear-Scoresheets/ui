@@ -11,6 +11,7 @@ import SingleSelect from 'terra-form-select/lib/SingleSelect';
 import SingleSelectField from 'terra-form-select/lib/SingleSelectField';
 import Checkbox from 'terra-form-checkbox';
 import CheckboxField from 'terra-form-checkbox/lib/CheckboxField';
+import '../../App.css';
 
 class SignUpPage extends React.Component {
   constructor(props) {
