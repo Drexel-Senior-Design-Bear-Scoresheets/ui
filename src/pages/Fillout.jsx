@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import '../styles/scoresheet.css';
 
 const Fillout = () => {
   const [scoreSheetData, setScoreSheetData] = useState(null);
