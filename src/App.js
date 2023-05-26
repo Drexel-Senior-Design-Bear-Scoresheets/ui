@@ -9,6 +9,8 @@ import SignInPage from './pages/SignInPage/SignInPage';
 import StartPage from './pages/StartPage/StartPage';
 import LandingPage from './pages/LandingPage/LandingPage';
 import ProfilePage from './pages/ProfilePage/ProfilePage';
+import Scoresheet from './pages/ScoresheetPage/Scoresheet';
+import Fillout from './pages/FilloutPage/Fillout';
 
 // This value could be sent from the server as well
 const locale = (navigator.languages && navigator.languages[0])
@@ -27,6 +29,8 @@ const App = () => (
         <Route path="/start" element={<StartPage />}></Route>
         <Route path="/landing" element={<LandingPage />}></Route>
         <Route path="/profile" element={<ProfilePage />}></Route>
+        <Route path="/scoresheet" element={<Scoresheet />}></Route>
+        <Route path="/fillout" element={<Fillout />}></Route>
       </Routes>
     </Router>
   </ApplicationBase>

@@ -11,6 +11,8 @@ const HomePage = () => (
         <Link to="/signUp">SignUp Page</Link>{"\n"}
         <Link to="/landing">Landing Page</Link>{"\n"}
         <Link to="/profile">Profile Page</Link>{"\n"}
+        <Link to="/scoresheet">Scoresheet</Link>{"\n"}
+        <Link to="/fillout">Fillout</Link>{"\n"}
     </div>
 );
 

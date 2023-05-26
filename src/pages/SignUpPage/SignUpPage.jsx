@@ -1,110 +1,140 @@
-import React from "react";
-import ReactDOM from 'react-dom/client';
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
 import ActionHeader from "terra-action-header";
-import OverlayContainer from "terra-overlay/lib/OverlayContainer";
 import Button from "terra-button";
-import Grid from "terra-grid";
 import InputField from 'terra-form-input/lib/InputField';
-import Hyperlink from 'terra-hyperlink';
-import SingleSelect from 'terra-form-select/lib/SingleSelect';
-import SingleSelectField from 'terra-form-select/lib/SingleSelectField';
+import SelectField from 'terra-form-select/lib/SelectField';
 import Checkbox from 'terra-form-checkbox';
 import CheckboxField from 'terra-form-checkbox/lib/CheckboxField';
-import '../../App.css';
-import style from '../../styles/SignUp.css';
+import axios from 'axios';
+import CustomToolbar from '../../CustomToolbar';
 
-class SignUpPage extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
+
+const SignUpPage = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [name, setName] = useState('');
+  const [institutionalAffiliation, setInstitutionalAffiliation] = useState('');
+  const [role, setRole] = useState('');
+  const [agreeTerms, setAgreeTerms] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
+  const [isInvalid, setIsInvalid] = useState(false);
+
+  const handleSignUp = () => {
+    if (password !== confirmPassword) {
+      setIsInvalid(true);
+      setErrorMessage("Passwords don't match");
+      return;
+    }
+
+    if (!agreeTerms) {
+      setIsInvalid(true);
+      setErrorMessage("Please agree to the Terms and Conditions");
+      return;
+    }
+
+    // Create an object with the input values
+    const signUpData = {
+      email,
+      password,
+      name,
+      institutionalAffiliation,
+      role
     };
-  }
 
-  render() {
-    return (
-        <>
-        <div>
-          <ActionHeader className="title" title="Sign Up" />
-          <p className="subtitle">Create an account to continue</p>
-        </div>
-        <form>
-        <InputField className="inputField"
-          inputId="email"
-          label="Email"
-          type="email"
-          labelAttrs = {{
-            className: "inputLabel"
-          }}
-          inputAttrs={{
-            className: "input"
-          }} />
-  
-        <InputField className="inputField"
-          inputId="password"
-          label="Password"
-          type="password"
-          inputAttrs={{
-            name: 'password',
-            className: "input"
-          }}
-          labelAttrs={{
-            className: "inputLabel",
-          }} />
-        
-        <InputField className="inputField"
-          inputId="confirm-password"
-          label="Confirm Password"
-          type="password"
-          inputAttrs={{
-            name: 'confirm-password',
-            className: "input"
-          }}
-          labelAttrs={{
-            className: "inputLabel",
-          }} />
+    // Make the API call to send the sign-up data
+    axios.post('your-api-endpoint', signUpData)
+      .then(response => {
+        // Handle the response
+        console.log('Sign Up Success:', response);
+      })
+      .catch(error => {
+        // Handle the error
+        console.error('Sign Up Error:', error);
+      });
+  };
 
-        <InputField className="inputField"
+  return (
+    <>
+      <CustomToolbar />
+      <div>
+        <ActionHeader className="title" title="Sign Up" />
+        <p className="subtitle">Create an account to continue</p>
+      </div>
+      <form>
+      <InputField
           inputId="name"
           label="Name"
           type="text"
-          inputAttrs={{
-            name: 'text',
-            className: "input"
-          }}
-          labelAttrs={{
-            className: "inputLabel",
-          }} />
+          value={name}
+          onChange={event => setName(event.target.value)}
+        />
+        <InputField
+          inputId="email"
+          label="Email"
+          type="email"
+          value={email}
+          onChange={event => setEmail(event.target.value)}
+        />
 
-        <SingleSelectField className="selectField" 
-          label="Institutional Affiliation" 
+        <InputField
+          inputId="password"
+          label="Password"
+          type="password"
+          value={password}
+          onChange={event => setPassword(event.target.value)}
+        />
+
+        <InputField
+          inputId="confirm-password"
+          label="Confirm Password"
+          type="password"
+          value={confirmPassword}
+          onChange={event => setConfirmPassword(event.target.value)}
+          error={isInvalid ? errorMessage : ''}
+        />
+
+
+        <SelectField
+          label="Institutional Affiliation"
+          value={institutionalAffiliation}
+          onChange={event => setInstitutionalAffiliation(event.target.value)}
           placeholder="Select an institutional affiliation"
-          labelAttrs={{
-            className: "inputLabel",
-          }}
-          >
-            <SingleSelectField.Option className="selectFieldOption" 
-              value="childrens-national" 
-              display="Children's National Hospital" 
-              />
-        </SingleSelectField>
+        >
+          <SelectField.Option value="childrens-national" display="Children's National Hospital" />
+        </SelectField>
+
+        <SelectField
+          label="Role"
+          value={role}
+          onChange={event => setRole(event.target.value)}
+          placeholder="Select a role"
+        >
+          <SelectField.Option value="role1" display="Role 1" />
+          <SelectField.Option value="role2" display="Role 2" />
+          <SelectField.Option value="role3" display="Role 3" />
+        </SelectField>
 
         <CheckboxField
-            error={"errorMessage"}
-            isInvalid={this.state.isInvalid}
-            legend=""
-          >
-            <Checkbox id="Agree" name="Agree" labelText="By making an account I agree to the Terms and Conditions" />
-          </CheckboxField>
-  
-        <Button className="button" text="Sign Up" type={Button.Opts.Types.SUBMIT}/>
-        </form>
-        <p className="haveAccount">Already have an account? <a className="link" href="/#/signin">Sign In</a></p>
-            
-        </>
-  
-      );
-  }
-}
+          error={isInvalid ? errorMessage : ''}
+          isInvalid={isInvalid}
+          legend=""
+        >
+          <Checkbox
+            id="agree-terms"
+            name="agree-terms"
+            labelText="By making an account I agree to the Terms and Conditions"
+            checked={agreeTerms}
+            onChange={event => setAgreeTerms(event.target.checked)}
+          />
+        </CheckboxField>
+
+        <Button className="button" text="Sign Up" onClick={handleSignUp} />
+
+      <p className="haveAccount">Already have an account? <a className="link" href="/#/signin">Sign In</a></p>
+    </form>
+    </>
+  );
+};
 
 export default SignUpPage;
