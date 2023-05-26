@@ -7,6 +7,7 @@ import Checkbox from 'terra-form-checkbox';
 import CheckboxField from 'terra-form-checkbox/lib/CheckboxField';
 import axios from 'axios';
 import CustomToolbar from '../../CustomToolbar';
+import {useNavigate} from 'react-router-dom';
 
 
 const SignUpPage = () => {
@@ -19,6 +20,7 @@ const SignUpPage = () => {
   const [agreeTerms, setAgreeTerms] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
   const [isInvalid, setIsInvalid] = useState(false);
+  const navigate = useNavigate();
 
   const handleSignUp = () => {
     if (password !== confirmPassword) {
@@ -41,6 +43,9 @@ const SignUpPage = () => {
       institutionalAffiliation,
       role
     };
+    alert("Signed Up succesfully!");
+    navigate('/signin');
+    /*
 
     // Make the API call to send the sign-up data
     axios.post('your-api-endpoint', signUpData)
@@ -52,16 +57,18 @@ const SignUpPage = () => {
         // Handle the error
         console.error('Sign Up Error:', error);
       });
+      */
   };
 
   return (
     <>
       <CustomToolbar />
       <div>
+      <div className="signup-form">
         <ActionHeader className="title" title="Sign Up" />
         <p className="subtitle">Create an account to continue</p>
-      </div>
       <form>
+        <center>
       <InputField
           inputId="name"
           label="Name"
@@ -110,9 +117,9 @@ const SignUpPage = () => {
           onChange={event => setRole(event.target.value)}
           placeholder="Select a role"
         >
-          <SelectField.Option value="role1" display="Role 1" />
-          <SelectField.Option value="role2" display="Role 2" />
-          <SelectField.Option value="role3" display="Role 3" />
+          <SelectField.Option value="Admin" display="Admin" />
+          <SelectField.Option value="Doctor" display="Doctor" />
+          <SelectField.Option value="Nurse" display="Nurse" />
         </SelectField>
 
         <CheckboxField
@@ -123,16 +130,21 @@ const SignUpPage = () => {
           <Checkbox
             id="agree-terms"
             name="agree-terms"
-            labelText="By making an account I agree to the Terms and Conditions"
+            
             checked={agreeTerms}
             onChange={event => setAgreeTerms(event.target.checked)}
           />
+          <br/>
+          <label>By making an account I agree to the Terms and Conditions</label>
         </CheckboxField>
 
         <Button className="button" text="Sign Up" onClick={handleSignUp} />
 
       <p className="haveAccount">Already have an account? <a className="link" href="/#/signin">Sign In</a></p>
+      </center>
     </form>
+    </div>
+    </div>
     </>
   );
 };

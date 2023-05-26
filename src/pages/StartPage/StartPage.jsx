@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import ActionHeader from "terra-action-header";
 import '../../styles/StartPage.css';
 import Image from 'terra-image';
+import CustomToolbar from '../../CustomToolbar';
 
 class StartPage extends React.Component {
   constructor(props) {
@@ -16,9 +17,7 @@ class StartPage extends React.Component {
   render() {
     return (
       <center>
-        <div>
-          <ActionHeader title="Start Page" />
-        </div>
+        <CustomToolbar />
         <div className="rectangle-title">
           <p className="bear-scoresheets">BEAR Scoresheets</p>
         </div>

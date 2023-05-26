@@ -103,6 +103,7 @@
     "@testing-library/jest-dom": "^5.16.5",
     "babel-jest": "^29.3.1",
     "dotenv": "^16.0.0",
+    "http-proxy-middleware": "^2.0.6",
     "jest-scss-transform": "^1.0.3"
   }
 }

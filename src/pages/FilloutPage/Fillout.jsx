@@ -1,27 +1,31 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import '../../styles/scoresheet.css';
+import { useParams } from 'react-router-dom';
 import CustomToolbar from '../../CustomToolbar';
+import Button from 'terra-button';
 
 const Fillout = () => {
   const [scoreSheetData, setScoreSheetData] = useState(null);
+  const { id } = useParams();
 
   useEffect(() => {
-    // Fetch score sheet data using GET request
-    axios.get('your_api_endpoint')
+    // Fetch score sheet data using GET request with the id parameter
+    axios.get(`http://localhost:5000/scoresheet/${id}`)
       .then(response => {
         setScoreSheetData(response.data);
       })
       .catch(error => {
         console.log(error);
       });
-  }, []);
+  }, [id]);
 
   if (!scoreSheetData) {
     return <div>Loading...</div>;
   }
 
-  const { title, information, reference, additionalQuestions } = scoreSheetData;
+  console.log(scoreSheetData)
+  const { scoresheetTitle, scoresheetInformation, scoresheetReference, additionalQuestions } = scoreSheetData.scoresheetData;
 
   const handleInputChange = (questionId, event) => {
     const updatedQuestions = additionalQuestions.map(question => {
@@ -53,10 +57,13 @@ const Fillout = () => {
 
   const renderQuestionInput = (question) => {
     switch (question.answerType) {
+      
       case 'Yes/No':
         return (
           <div>
-            <label>
+            <p className="fillout-question-text">{question.text}</p>
+            <div className="radio-container">
+            <label className="radio-label">
               <input
                 type="radio"
                 value="Yes"
@@ -66,7 +73,7 @@ const Fillout = () => {
               />
               Yes
             </label>
-            <label>
+            <label className="radio-label">
               <input
                 type="radio"
                 value="No"
@@ -76,20 +83,21 @@ const Fillout = () => {
               />
               No
             </label>
+            </div>
           </div>
         );
       case 'Multiple Option':
         return (
           <div>
-            <p>{question.text}</p>
+            <p className="fillout-question-text">{question.text}</p>
             {question.inputFields.map((input, index) => (
-              <div key={index}>
-                <label>
-                  <input
+              <div key={index} className="checkbox-container">
+                <label className="checkbox-label">
+                  <input className="checkbox-input"
                     type="checkbox"
                     name={`question-${question.id}`}
                     value={input}
-                    checked={question.answer.includes(input)}
+                    
                     onChange={(event) => handleInputChange(question.id, event)}
                   />
                   {input}
@@ -101,7 +109,7 @@ const Fillout = () => {
       case 'Scalar':
         return (
           <div>
-            <p>{question.text}</p>
+            <p className="fillout-question-text">{question.text}</p>
             <input
               type="text"
               name={`question-${question.id}`}
@@ -117,10 +125,12 @@ const Fillout = () => {
 
   return (
     <div>
-      <CustomToolbar></CustomToolbar>
-      <h1>{title}</h1>
-      <p>{information}</p>
-      <p>{reference}</p>
+      <CustomToolbar/>
+      <div className="fillout-form">
+        <center>
+      <h1 className="fillout-title">{scoresheetTitle}</h1>
+      <p className="fillout-info">{scoresheetInformation}</p>
+      <p className="fillout-ref">{scoresheetReference}</p>
 
       {additionalQuestions.map((question) => (
         <div key={question.id}>
@@ -128,7 +138,9 @@ const Fillout = () => {
         </div>
       ))}
 
-      <button onClick={handleSave}>Save</button>
+      <Button className="button" text="Save" onClick={handleSave}></Button>
+      </center>
+    </div>
     </div>
   );
 };

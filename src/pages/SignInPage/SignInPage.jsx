@@ -5,10 +5,12 @@ import InputField from 'terra-form-input/lib/InputField';
 import CustomToolbar from '../../CustomToolbar';
 import axios from 'axios';
 import '../../styles/Signin.css';
+import {useNavigate} from 'react-router-dom';
 
 const SignInPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate();
 
   const handleSignIn = (event) => {
     event.preventDefault();
@@ -18,6 +20,10 @@ const SignInPage = () => {
       email,
       password
     };
+    alert("Signed in succesfully!");
+    navigate('/landing');
+
+    /*
 
     // Make the API call to send the sign-in data
     axios.post('your-api-endpoint', signInData)
@@ -29,17 +35,19 @@ const SignInPage = () => {
         // Handle the error
         console.error('Sign In Error:', error);
       });
+      */
   };
 
   return (
       <div>
         <CustomToolbar />
-        <div className="signin-container">
+        <center>
+        <div className="signin-form">
         <div>
           <ActionHeader className="title" title="Sign In" />
           <p className="subtitle">Welcome back!</p>
         </div>
-        <div className="signin-form">
+        <div>
           <form onSubmit={handleSignIn}>
             <div className="input-field-wrapper">
               <InputField
@@ -80,6 +88,7 @@ const SignInPage = () => {
           <p className="haveAccount">Don't have an account? <a className="link" href="/#/signup">Sign Up</a></p>
         </div>
         </div>
+        </center>
       </div>
     );
   };

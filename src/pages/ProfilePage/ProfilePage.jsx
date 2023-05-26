@@ -1,31 +1,18 @@
 import React, { useState, useEffect } from 'react';
-import Layout from 'terra-layout';
 import Card from 'terra-card';
 import Button from "terra-button";
-import Toolbar from 'terra-toolbar';
-import IconProvider from 'terra-icon/lib/icon/IconProvider';
-import IconHouse from 'terra-icon/lib/icon/IconHouse';
 import IconEdit from 'terra-icon/lib/icon/IconEdit';
-import Avatar from 'terra-avatar';
-import styles from '../../styles/Signin.css';
-import classNames from 'classnames/bind';
 import ContentContainer from 'terra-content-container';
 import Input from 'terra-form-input';
 import CustomToolbar from '../../CustomToolbar';
 import Image from 'terra-image';
-import Table, {
-  Header,
-  HeaderCell,
-  Body,
-  Cell,
-  Row,
-} from 'terra-html-table';
+import Table from 'terra-html-table';
 
 const ProfilePage = () => {
   const [profileData, setProfileData] = useState({
-    name: '',
-    email: '',
-    role: '',
+    name: 'Gurleen',
+    email: 'gurleen@gmail.com',
+    role: 'Admin',
   });
   const [editing, setEditing] = useState(false); // State to track editing mode
   const [updatedProfileData, setUpdatedProfileData] = useState({
@@ -33,7 +20,6 @@ const ProfilePage = () => {
     email: '',
     role: '',
   }); // State to track updated profile data
-  const cx = classNames.bind(styles);
 
   useEffect(() => {
     // Fetch profile data from the API and update the state
@@ -58,6 +44,7 @@ const ProfilePage = () => {
   };
 
   const handleSaveProfile = () => {
+    /*
     // Make your API call here to save the updated profile data
     // Replace the placeholder URL with your actual API endpoint
     fetch('https://api.example.com/update-profile', {
@@ -74,6 +61,13 @@ const ProfilePage = () => {
         setEditing(false);
       })
       .catch(error => console.error('Error saving profile data:', error));
+      */
+      
+      setProfileData(updatedProfileData);
+      setEditing(false);
+      alert("Changes Saved!")
+      
+      
   };
 
   const handleInputChange = event => {
@@ -88,74 +82,74 @@ const ProfilePage = () => {
     <div>
       <CustomToolbar />
       <div className="profile-card">
-      <Card className='mt-2 border-0 rounded-0 shadow-sm'>
-        <Card.Body>
-          <ContentContainer className='text-center'>
-            <Image className="profile-icon" style={{ maxWidth: '200px', maxHeight: '200px' }} src={'https://freesvg.org/img/abstract-user-flat-4.png'} alt="rounded image" variant="rounded" />
-          </ContentContainer>
-          <Table responsive striped hover bordered={true} className='text-center mt-5'>
-            <tbody>
-              <tr>
-                <td>
-                  Username
-                </td>
-                <td>
-                  {editing ? (
-                    <Input
-                      name="name"
-                      value={updatedProfileData.name}
-                      onChange={handleInputChange}
-                    />
-                  ) : (
-                    profileData.name
-                  )}
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  Email
-                </td>
-                <td>
-                  {editing ? (
-                    <Input
-                      name="email"
-                      value={updatedProfileData.email}
-                      onChange={handleInputChange}
-                    />
-                  ) : (
-                    profileData.email
-                  )}
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  Role
-                </td>
-                <td>
-                  {editing ? (
-                    <Input
-                      name="role"
-                      value={updatedProfileData.role}
-                      onChange={handleInputChange}
-                    />
-                  ) : (
-                    profileData.role
-                  )}
-                </td>
-              </tr>
-            </tbody>
-          </Table>
-        </Card.Body>
-        {!editing ? (
-          <Button className="update-profile-button"text="Update Profile" variant="action" icon={<IconEdit />} onClick={handleEditProfile} />
-        ) : (
-          <div>
-            <Button text="Save" variant="action" icon={<IconEdit />} onClick={handleSaveProfile} />
-            <Button text="Cancel" variant="utility" onClick={() => setEditing(false)} />
-          </div>
-        )}
-      </Card>
-    </div>
+        <Card className='mt-2 border-0 rounded-0 shadow-sm'>
+          <Card.Body className="card-test">
+            <ContentContainer className='text-center'>
+              <Image className="profile-icon" style={{ maxWidth: '200px', maxHeight: '200px' }} src={'https://freesvg.org/img/abstract-user-flat-4.png'} alt="rounded image" variant="rounded" />
+            </ContentContainer>
+            <Table responsive striped hover bordered={true} className='text-center mt-5'>
+              <tbody>
+                <tr>
+                  <td className="profile-labels">
+                    Username
+                  </td>
+                  <td>
+                    {editing ? (
+                      <Input
+                        name="name"
+                        value={updatedProfileData.name}
+                        onChange={handleInputChange}
+                      />
+                    ) : (
+                      profileData.name
+                    )}
+                  </td>
+                </tr>
+                <tr>
+                  <td className="profile-labels">
+                    Email
+                  </td>
+                  <td>
+                    {editing ? (
+                      <Input
+                        name="email"
+                        value={updatedProfileData.email}
+                        onChange={handleInputChange}
+                      />
+                    ) : (
+                      profileData.email
+                    )}
+                  </td>
+                </tr>
+                <tr>
+                  <td className="profile-labels">
+                    Role
+                  </td>
+                  <td>
+                    {editing ? (
+                      <Input
+                        name="role"
+                        value={updatedProfileData.role}
+                        onChange={handleInputChange}
+                      />
+                    ) : (
+                      profileData.role
+                    )}
+                  </td>
+                </tr>
+              </tbody>
+            </Table>
+          </Card.Body>
+          {!editing ? (
+            <Button className="update-profile-button" text="Update Profile" variant="action" icon={<IconEdit />} onClick={handleEditProfile} />
+          ) : (
+            <div>
+              <Button text="Save" variant="action" icon={<IconEdit />} onClick={handleSaveProfile} />
+              <Button text="Cancel" variant="utility" onClick={() => setEditing(false)} />
+            </div>
+          )}
+        </Card>
+      </div>
     </div>
   );
 };

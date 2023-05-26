@@ -4,6 +4,7 @@ import Button from 'terra-button';
 import Radio from 'terra-form-radio';
 import Input from 'terra-form-input';
 import Text from 'terra-text';
+import axios from 'axios';
 
 import CustomToolbar from '../../CustomToolbar';
 
@@ -93,6 +94,7 @@ const ScoreSheetCreator = () => {
       scoresheetInformation: questions[1].data,
       scoresheetReference: questions[2].data,
       selectKeyword: selectedKeyword,
+      scoresheetDate: new Date().toISOString(), // Add the current date as an ISO string
       additionalQuestions: additionalQuestions.map((question) => ({
         text: question.data,
         answerType: question.answerType,
@@ -100,7 +102,24 @@ const ScoreSheetCreator = () => {
       })),
     };
     console.log(scoresheetData);
+    
+  
+    // Send a POST request to create a scoresheet
+    axios
+      .post('http://localhost:5000/scoresheet/new', {
+        scoresheetData,
+        userId: 'your_user_id', // Replace with the actual user ID
+      })
+      .then((response) => {
+        // Handle the response from the API
+        console.log('Scoresheet created:', response.data);
+      })
+      .catch((error) => {
+        // Handle errors
+        console.error('Error creating scoresheet:', error);
+      });
   };
+
 
   return (
     <div className="scoresheet-container">

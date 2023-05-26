@@ -1,6 +1,6 @@
 import React from 'react';
 import ApplicationBase from 'terra-application/lib/application-base';
-import { HashRouter as Router, Route, Routes } from 'react-router-dom';
+import { HashRouter as Router, Route, Routes, Redirect } from 'react-router-dom';
 
 import HomePage from './pages/HomePage/HomePage';
 import AboutPage from './pages/AboutPage/AboutPage';
@@ -21,17 +21,18 @@ const locale = (navigator.languages && navigator.languages[0])
 const App = () => (
   <ApplicationBase locale={locale}>
     <Router>
-      <Routes>
-        <Route exact path="/" element={<HomePage />} />
-        <Route path="/about" element={<AboutPage />}></Route>
-        <Route path="/signup" element={<SignUpPage />}></Route>
-        <Route path="/signin" element={<SignInPage />}></Route>
-        <Route path="/start" element={<StartPage />}></Route>
-        <Route path="/landing" element={<LandingPage />}></Route>
-        <Route path="/profile" element={<ProfilePage />}></Route>
-        <Route path="/scoresheet" element={<Scoresheet />}></Route>
-        <Route path="/fillout" element={<Fillout />}></Route>
-      </Routes>
+        <Routes>
+      <Route exact path="/" element={<HomePage />} />
+      <Route path="/about" element={<AboutPage />} />
+      <Route path="/signup" element={<SignUpPage />} />
+      <Route path="/signin" element={<SignInPage />} />
+      <Route path="/start" element={<StartPage />} />
+      <Route path="/landing" element={<LandingPage />} />
+      <Route path="/profile" element={<ProfilePage />} />
+      <Route path="/scoresheet" element={<Scoresheet />} />
+      <Route path="/fillout/:id" element={<Fillout />} />
+    </Routes>
+
     </Router>
   </ApplicationBase>
 );

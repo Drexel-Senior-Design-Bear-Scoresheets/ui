@@ -158,12 +158,6 @@ body {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-h1 {
-  font-size: 24px;
-  font-weight: bold;
-  color: #333333;
-  margin-bottom: 20px;
-}
 
 .question-section {
   background-color: #ffffff;
@@ -246,9 +240,10 @@ box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 /* profile page style */
 
 .profile-card{
-margin-top: 10%;
-margin-left: 25%;
-width: 50%;
+  margin-top: 10%;
+  margin-left: 25%;
+  width: 50%;
+  height: 100%;
 }
 
 .profile-icon{
@@ -258,6 +253,7 @@ margin-left:35%;
 .update-profile-button{
 margin-left: 40%;
 }
+
 
 /* landing page styles */
 
@@ -309,6 +305,192 @@ padding-left: 10px;
 padding-right: 10px;
 width: 375px;
 }
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th,
+.table td {
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+
+.table th {
+  background-color: #f2f2f2;
+  text-align: left;
+}
+
+.table-row:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.table-link {
+  color: blue;
+  text-decoration: underline;
+}
+
+.table-container{
+  width: 70%;
+  background-color: lightgray;
+}
+
+/* start page style */
+.rectangle-title {
+  width: 50vh;
+  height: 20vh;
+  background-color: #0070c0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border-radius: 10px; /* Add border-radius property to make the borders round */
+}
+
+
+.bear-scoresheets {
+  font-size: 36px;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+
+.LogoImage {
+  width: 30vh;
+  height: 30vh;
+  margin-bottom: 20px;
+}
+
+.SignupButton {
+  margin-top: 10px;
+  background-color: #0070c0;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  width: 150px;
+  margin-left: 10px;
+  font-family: "DM Sans, sans-serif";
+}
+
+.LoginButton {
+  margin-top: 10px;
+  background-color: #0070c0;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  width: 150px;
+  margin-left: 10px;
+  font-family: "DM Sans, sans-serif";
+}
+
+/* fillout page style */
+
+.fillout-form {
+  margin-top: 10%;
+  margin-left: 30%;
+  max-width: 600px;
+  padding: 20px;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.fillout-title{
+  font-size: 36px;
+  font-weight: bold;
+  color: #333333;
+  margin-bottom: 20px;
+}
+
+.fillout-info{
+  font-size: 24px;
+  font-weight: bold;
+  color: #333333;
+  margin-bottom: 20px;
+
+}
+
+.fillout-ref{
+  font-size: 24px;
+  font-weight: bold;
+  color: #333333;
+  margin-bottom: 20px;
+  
+}
+
+.fillout-question-text{
+  font-size: 24px;
+  font-family:'Courier New', Courier, monospace;
+  font-weight: bold;
+  color: #333333;
+  margin-bottom: 20px;
+}
+
+.checkbox-label {
+  display: inline-flex;
+  align-items: center;
+  font-size:medium;
+}
+
+.checkbox-input {
+  margin-right: 5px;
+  width: 20px;
+  height: 20px;
+}
+
+.checkbox-container {
+  display: inline-flex;
+  align-items: center;
+}
+
+.radio-label {
+  display: inline-flex;
+  align-items: center;
+  font-size:medium;
+}
+
+.radio-container {
+  display: inline-flex;
+  align-items: center;
+}
+
+/* signup form */
+
+.signup-form {
+  margin-top: 5%;
+  margin-left: 30%;
+  max-width: 600px;
+  padding: 20px;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* sign in form */
+.signin-form {
+  margin-top: 5%;
+  max-width: 600px;
+  padding: 20px;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+
+
+
+
+
+
+
 
 
 
