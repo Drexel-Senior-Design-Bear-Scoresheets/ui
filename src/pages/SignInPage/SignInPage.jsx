@@ -7,6 +7,7 @@ import Button from "terra-button";
 import Grid from "terra-grid";
 import InputField from 'terra-form-input/lib/InputField';
 import Hyperlink from 'terra-hyperlink';
+import style from '../../styles/SignIn.css';
 
 
 class SignInPage extends React.Component {
@@ -20,28 +21,36 @@ class SignInPage extends React.Component {
     return (
       <>
       <div>
-        <ActionHeader title="Sign In" />
+        <ActionHeader className="title" title="Sign In" />
+        <p className="subtitle">Welcome back!</p>
       </div>
       <form>
-      <InputField
+      <InputField className="inputField"
         inputId="email"
         label="Email"
         type="email"
+        labelAttrs = {{
+          className: "inputLabel"
+        }}
         inputAttrs={{
-          name: 'email',
+          className: "input"
         }} />
 
-      <InputField
+      <InputField className="inputField"
         inputId="password"
         label="Password"
         type="password"
         inputAttrs={{
           name: 'password',
+          className: "input"
+        }}
+        labelAttrs={{
+          className: "inputLabel",
         }} />
 
-      <Button text="Sign In" type={Button.Opts.Types.SUBMIT}/>
+      <Button className="button" text="Sign In" type={Button.Opts.Types.SUBMIT}/>
       </form>
-      <p>Don't have an account? <Hyperlink  href="/#/signup">Sign Up</Hyperlink></p>
+      <p className="haveAccount">Don't have an account? <a className="link" href="/#/signup" >Sign Up</a></p>
           
       </>
 

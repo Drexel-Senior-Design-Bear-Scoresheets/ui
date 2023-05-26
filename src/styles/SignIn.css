@@ -1,0 +1,104 @@
+body {
+    position: relative;
+    width: 75%;
+    height: 75%;
+    left: 10%;
+    top:  10%;
+  
+    background: #ffffff;
+    border-radius: 15px;
+
+    
+  }
+
+  .button {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: fit-content;
+    padding: 5px 50px 5px 50px;
+    border-radius: 30px;
+    box-sizing: border-box;
+    background-color: rgba(177, 203, 252, 1);
+    box-shadow: 3px 6px 10px rgba(165, 165, 165, 0.25);
+    color:#ffffff;
+    font-weight: 600;
+    margin: auto;
+  }
+
+  .button:hover {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: fit-content;
+    padding: 5px 50px 5px 50px;
+    border-radius: 30px;
+    box-sizing: border-box;
+    background-color: rgb(143, 164, 205);
+    box-shadow: 3px 6px 10px rgba(165, 165, 165, 0.25);
+    color:#ffffff;
+    font-weight: 600;
+    margin: auto;
+  }
+
+  .title {
+    font-size: larger;
+    color: black;
+    font-weight: bolder;
+  }
+
+  .subtitle {
+    font-size: smaller;
+    font-weight: 600;
+    color:gray;
+    padding-left: 5%;
+  }
+
+  .inputField {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 100%;
+    border-radius: 15px;
+    box-sizing: border-box;
+    background-color: rgb(235, 235, 235);
+    padding: 5%;
+  }
+
+  .input {
+    background-color: rgb(235, 235, 235);
+    border: 0;
+    
+  }
+
+  .input:hover {
+    background-color: rgb(235, 235, 235);
+    border: 0;
+    
+  }
+
+  .inputLabel {
+    color: rgb(150, 150, 150);
+    font-weight: 400;
+    font-size: smaller;
+  }
+
+  .link{
+    color: rgb(50, 50, 50);
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  .link:hover{
+    color: rgb(150, 150, 150);
+    text-decoration: underline;
+  }
+
+  .haveAccount {
+    color: rgb(125, 125, 125);
+    font-size: smaller;
+  }
+  
