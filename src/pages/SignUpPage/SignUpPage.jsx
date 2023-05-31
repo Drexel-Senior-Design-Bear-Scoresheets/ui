@@ -2,12 +2,12 @@ import React, { useState } from "react";
 import ActionHeader from "terra-action-header";
 import Button from "terra-button";
 import InputField from 'terra-form-input/lib/InputField';
-import SelectField from 'terra-form-select/lib/SelectField';
+import Select from 'terra-form-select/lib/Select';
 import Checkbox from 'terra-form-checkbox';
 import CheckboxField from 'terra-form-checkbox/lib/CheckboxField';
-import axios from 'axios';
 import CustomToolbar from '../../CustomToolbar';
 import {useNavigate} from 'react-router-dom';
+import { register } from "../../auth";
 
 
 const SignUpPage = () => {
@@ -15,6 +15,7 @@ const SignUpPage = () => {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [name, setName] = useState('');
+  const [username, setUsername] = useState('');
   const [institutionalAffiliation, setInstitutionalAffiliation] = useState('');
   const [role, setRole] = useState('');
   const [agreeTerms, setAgreeTerms] = useState(false);
@@ -43,21 +44,10 @@ const SignUpPage = () => {
       institutionalAffiliation,
       role
     };
-    alert("Signed Up succesfully!");
-    navigate('/signin');
-    /*
 
-    // Make the API call to send the sign-up data
-    axios.post('your-api-endpoint', signUpData)
-      .then(response => {
-        // Handle the response
-        console.log('Sign Up Success:', response);
-      })
-      .catch(error => {
-        // Handle the error
-        console.error('Sign Up Error:', error);
-      });
-      */
+    register(name, username, password, email, institutionalAffiliation, role);
+
+    navigate('/signin');
   };
 
   return (
@@ -75,6 +65,13 @@ const SignUpPage = () => {
           type="text"
           value={name}
           onChange={event => setName(event.target.value)}
+        />
+        <InputField
+          inputId="username"
+          label="Username"
+          type="text"
+          value={username}
+          onChange={event => setUsername(event.target.value)}
         />
         <InputField
           inputId="email"
@@ -102,25 +99,25 @@ const SignUpPage = () => {
         />
 
 
-        <SelectField
+        <Select
           label="Institutional Affiliation"
           value={institutionalAffiliation}
-          onChange={event => setInstitutionalAffiliation(event.target.value)}
+          onChange={(val) => setInstitutionalAffiliation(val)}
           placeholder="Select an institutional affiliation"
         >
-          <SelectField.Option value="childrens-national" display="Children's National Hospital" />
-        </SelectField>
+          <Select.Option value="childrens-national" display="Children's National Hospital" />
+        </Select>
 
-        <SelectField
+        <Select
           label="Role"
           value={role}
-          onChange={event => setRole(event.target.value)}
+          onChange={val => setRole(val)}
           placeholder="Select a role"
         >
-          <SelectField.Option value="Admin" display="Admin" />
-          <SelectField.Option value="Doctor" display="Doctor" />
-          <SelectField.Option value="Nurse" display="Nurse" />
-        </SelectField>
+          <Select.Option value="Admin" display="Admin" />
+          <Select.Option value="Doctor" display="Doctor" />
+          <Select.Option value="Nurse" display="Nurse" />
+        </Select>
 
         <CheckboxField
           error={isInvalid ? errorMessage : ''}

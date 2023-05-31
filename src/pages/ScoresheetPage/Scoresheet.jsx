@@ -5,8 +5,10 @@ import Radio from 'terra-form-radio';
 import Input from 'terra-form-input';
 import Text from 'terra-text';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 import CustomToolbar from '../../CustomToolbar';
+import { getAuthHeaders } from '../../auth';
 
 const ScoreSheetCreator = () => {
   const initialQuestions = [
@@ -19,6 +21,8 @@ const ScoreSheetCreator = () => {
   const [additionalQuestions, setAdditionalQuestions] = useState([
     { id: 1, text: 'Insert Question 1', answerType: 'Yes/No', data: '', showInputField: false, inputFields: [] },
   ]);
+
+  const navigate = useNavigate();
 
   const handleQuestionInputChange = (event, index) => {
     const updatedQuestions = [...questions];
@@ -71,6 +75,7 @@ const ScoreSheetCreator = () => {
   };
 
   const handleAddQuestion = () => {
+    console.log(additionalQuestions.length)
     const newQuestion = {
       id: additionalQuestions.length + 1,
       text: 'Insert Question ' + (additionalQuestions.length + 1),
@@ -96,6 +101,7 @@ const ScoreSheetCreator = () => {
       selectKeyword: selectedKeyword,
       scoresheetDate: new Date().toISOString(), // Add the current date as an ISO string
       additionalQuestions: additionalQuestions.map((question) => ({
+        id: question.id,
         text: question.data,
         answerType: question.answerType,
         inputFields: question.inputFields,
@@ -106,13 +112,14 @@ const ScoreSheetCreator = () => {
   
     // Send a POST request to create a scoresheet
     axios
-      .post('http://localhost:5000/scoresheet/new', {
-        scoresheetData,
-        userId: 'your_user_id', // Replace with the actual user ID
-      })
+      .post('http://localhost:3000/scoresheet/new', {
+        ...scoresheetData,
+      }, getAuthHeaders())
       .then((response) => {
         // Handle the response from the API
         console.log('Scoresheet created:', response.data);
+        alert("Scoresheet created!");
+        navigate("/scoresheet")
       })
       .catch((error) => {
         // Handle errors

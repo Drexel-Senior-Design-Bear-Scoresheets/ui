@@ -7,6 +7,7 @@ import Input from 'terra-form-input';
 import CustomToolbar from '../../CustomToolbar';
 import Image from 'terra-image';
 import Table from 'terra-html-table';
+import { getUserAttributes } from '../../auth';
 
 const ProfilePage = () => {
   const [profileData, setProfileData] = useState({
@@ -34,9 +35,28 @@ const ProfilePage = () => {
   const fetchProfileData = async () => {
     // Make your API call here to fetch the profile data
     // Replace the placeholder URLs with your actual API endpoints
-    const response = await fetch('https://api.example.com/profile');
-    const data = await response.json();
-    return data;
+    let data = getUserAttributes();
+    let filteredData = {}
+    data.forEach((attr) => {
+      switch(attr.Name) {
+        case "given_name":
+          filteredData.firstName = attr.Value;
+          break;
+        case "family_name":
+          filteredData.lastName = attr.Value;
+          break;
+        case "email":
+          filteredData.email = attr.Value;
+          break;
+        case "custom:role":
+          filteredData.role = attr.Value;
+          break;
+        default:
+          break;
+      }
+    })
+    filteredData.name = filteredData.firstName + " " + filteredData.lastName;
+    return filteredData;
   };
 
   const handleEditProfile = () => {
@@ -44,24 +64,6 @@ const ProfilePage = () => {
   };
 
   const handleSaveProfile = () => {
-    /*
-    // Make your API call here to save the updated profile data
-    // Replace the placeholder URL with your actual API endpoint
-    fetch('https://api.example.com/update-profile', {
-      method: 'PUT',
-      body: JSON.stringify(updatedProfileData),
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    })
-      .then(response => response.json())
-      .then(data => {
-        setProfileData(data);
-        setUpdatedProfileData(data);
-        setEditing(false);
-      })
-      .catch(error => console.error('Error saving profile data:', error));
-      */
       
       setProfileData(updatedProfileData);
       setEditing(false);

@@ -5,13 +5,16 @@ import { useParams } from 'react-router-dom';
 import CustomToolbar from '../../CustomToolbar';
 import Button from 'terra-button';
 
+import styles from './Fillout.css'
+import { getAuthHeaders } from '../../auth';
+
 const Fillout = () => {
   const [scoreSheetData, setScoreSheetData] = useState(null);
   const { id } = useParams();
 
   useEffect(() => {
     // Fetch score sheet data using GET request with the id parameter
-    axios.get(`http://localhost:5000/scoresheet/${id}`)
+    axios.get(`http://localhost:3000/scoresheet/${id}`, getAuthHeaders())
       .then(response => {
         setScoreSheetData(response.data);
       })
@@ -25,7 +28,7 @@ const Fillout = () => {
   }
 
   console.log(scoreSheetData)
-  const { scoresheetTitle, scoresheetInformation, scoresheetReference, additionalQuestions } = scoreSheetData.scoresheetData;
+  const { scoresheetTitle, scoresheetInformation, scoresheetReference, additionalQuestions } = scoreSheetData;
 
   const handleInputChange = (questionId, event) => {
     const updatedQuestions = additionalQuestions.map(question => {
@@ -46,13 +49,14 @@ const Fillout = () => {
 
   const handleSave = () => {
     // Send PUT request to save the modified data
-    axios.put('your_api_endpoint', scoreSheetData)
+    /*axios.put('your_api_endpoint', scoreSheetData)
       .then(response => {
         console.log('Data saved successfully:', response.data);
       })
       .catch(error => {
         console.log('Error saving data:', error);
-      });
+      });*/
+      print();
   };
 
   const renderQuestionInput = (question) => {
@@ -68,7 +72,7 @@ const Fillout = () => {
                 type="radio"
                 value="Yes"
                 name={`question-${question.id}`}
-                checked={question.answer === 'Yes'}
+                defaultChecked={question.answer === 'Yes'}
                 onChange={(event) => handleInputChange(question.id, event)}
               />
               Yes
@@ -78,7 +82,7 @@ const Fillout = () => {
                 type="radio"
                 value="No"
                 name={`question-${question.id}`}
-                checked={question.answer === 'No'}
+                defaultChecked={question.answer === 'No'}
                 onChange={(event) => handleInputChange(question.id, event)}
               />
               No
@@ -97,7 +101,6 @@ const Fillout = () => {
                     type="checkbox"
                     name={`question-${question.id}`}
                     value={input}
-                    
                     onChange={(event) => handleInputChange(question.id, event)}
                   />
                   {input}
@@ -123,6 +126,8 @@ const Fillout = () => {
     }
   };
 
+  let date = new Date();
+
   return (
     <div>
       <CustomToolbar/>
@@ -131,6 +136,7 @@ const Fillout = () => {
       <h1 className="fillout-title">{scoresheetTitle}</h1>
       <p className="fillout-info">{scoresheetInformation}</p>
       <p className="fillout-ref">{scoresheetReference}</p>
+      <p>Report filled out on: {date.toLocaleDateString()} {date.toLocaleTimeString()}</p>
 
       {additionalQuestions.map((question) => (
         <div key={question.id}>
@@ -138,7 +144,11 @@ const Fillout = () => {
         </div>
       ))}
 
-      <Button className="button" text="Save" onClick={handleSave}></Button>
+      <p className='fillout-ref'>Additional info:</p>
+      <textarea></textarea>
+      <br></br>
+
+      <Button className="button" text="Print" onClick={handleSave}></Button>
       </center>
     </div>
     </div>

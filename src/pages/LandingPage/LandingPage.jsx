@@ -5,20 +5,22 @@ import CustomToolbar from '../../CustomToolbar';
 import SearchField from 'terra-search-field';
 import classNames from 'classnames/bind';
 import styles from '../../LandingPage.css';
+import { getAuthHeaders } from '../../auth';
 
 const LandingPage = () => {
   const cx = classNames.bind(styles);
   const [rowData, setRowData] = useState([]);
   const [searchText, setSearchText] = useState('');
 
+  console.log(getAuthHeaders());
   useEffect(() => {
     // Fetch data from the API
-    axios.get('http://localhost:5000/scoresheet')
+    axios.get('http://localhost:3000/scoresheet', getAuthHeaders())
       .then(response => {
         // Update the rowData state with the fetched data
         setRowData(response.data);
         console.log(response.data);
-      })
+      }, )
       .catch(error => {
         console.error('Error fetching data:', error);
       });
@@ -33,12 +35,14 @@ const LandingPage = () => {
     });
   };
 
+  /*
   const filteredRows = rowData.filter(row =>
     row.scoresheetData && (
       row.scoresheetData.scoresheetTitle.toLowerCase().includes(searchText.toLowerCase()) ||
       row.scoresheetData.scoresheetDate.toLowerCase().includes(searchText.toLowerCase())
     )
-  );
+  );*/
+  const filteredRows = rowData
 
   return (
     <div>
@@ -68,11 +72,11 @@ const LandingPage = () => {
                 <tr className={cx('table-row')} key={`SCORESHEET_${index}`}>
                   <td className={cx('table-cell')}>
                     <Link to={`/fillout/${row.id}`} className={cx('table-link')}>
-                      {row.scoresheetData.scoresheetTitle}
+                      {row.scoresheetTitle}
                     </Link>
                   </td>
                   <td className={cx('table-cell')}>
-                    {formatDateString(row.scoresheetData.scoresheetDate)}
+                    {formatDateString(row.createdAt)}
                   </td>
                 </tr>
               ))}

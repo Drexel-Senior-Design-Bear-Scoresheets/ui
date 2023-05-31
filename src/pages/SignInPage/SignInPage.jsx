@@ -6,36 +6,20 @@ import CustomToolbar from '../../CustomToolbar';
 import axios from 'axios';
 import '../../styles/Signin.css';
 import {useNavigate} from 'react-router-dom';
+import { setCookie } from "../../cookie";
+import { signIn } from "../../auth";
 
 const SignInPage = () => {
-  const [email, setEmail] = useState('');
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
 
   const handleSignIn = (event) => {
     event.preventDefault();
 
-    // Create an object with the input values
-    const signInData = {
-      email,
-      password
-    };
+    signIn(username, password);
     alert("Signed in succesfully!");
-    navigate('/landing');
-
-    /*
-
-    // Make the API call to send the sign-in data
-    axios.post('your-api-endpoint', signInData)
-      .then(response => {
-        // Handle the response
-        console.log('Sign In Success:', response);
-      })
-      .catch(error => {
-        // Handle the error
-        console.error('Sign In Error:', error);
-      });
-      */
+    setTimeout(() => navigate('/landing'), 2000);
   };
 
   return (
@@ -51,11 +35,11 @@ const SignInPage = () => {
           <form onSubmit={handleSignIn}>
             <div className="input-field-wrapper">
               <InputField
-                inputId="email"
-                label="Email"
-                type="email"
-                value={email}
-                onChange={event => setEmail(event.target.value)}
+                inputId="username"
+                label="Username"
+                type="text"
+                value={username}
+                onChange={event => setUsername(event.target.value)}
                 className="inputField"
                 inputAttrs={{
                   className: "input"
