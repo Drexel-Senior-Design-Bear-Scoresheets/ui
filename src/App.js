@@ -22,7 +22,7 @@ const App = () => (
   <ApplicationBase locale={locale}>
     <Router>
         <Routes>
-      <Route exact path="/" element={<HomePage />} />
+      <Route exact path="/" element={<StartPage />} />
       <Route path="/about" element={<AboutPage />} />
       <Route path="/signup" element={<SignUpPage />} />
       <Route path="/signin" element={<SignInPage />} />

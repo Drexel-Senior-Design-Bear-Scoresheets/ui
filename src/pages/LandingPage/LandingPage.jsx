@@ -15,7 +15,7 @@ const LandingPage = () => {
   console.log(getAuthHeaders());
   useEffect(() => {
     // Fetch data from the API
-    axios.get('http://localhost:3000/scoresheet', getAuthHeaders())
+    axios.get(`${BASE_URL}/scoresheet`, getAuthHeaders())
       .then(response => {
         // Update the rowData state with the fetched data
         setRowData(response.data);

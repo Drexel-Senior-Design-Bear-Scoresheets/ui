@@ -112,7 +112,7 @@ const ScoreSheetCreator = () => {
   
     // Send a POST request to create a scoresheet
     axios
-      .post('http://localhost:3000/scoresheet/new', {
+      .post(`${BASE_URL}/scoresheet/new`, {
         ...scoresheetData,
       }, getAuthHeaders())
       .then((response) => {

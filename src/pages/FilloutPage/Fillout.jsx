@@ -5,7 +5,6 @@ import { useParams } from 'react-router-dom';
 import CustomToolbar from '../../CustomToolbar';
 import Button from 'terra-button';
 
-import styles from './Fillout.css'
 import { getAuthHeaders } from '../../auth';
 
 const Fillout = () => {
@@ -14,7 +13,7 @@ const Fillout = () => {
 
   useEffect(() => {
     // Fetch score sheet data using GET request with the id parameter
-    axios.get(`http://localhost:3000/scoresheet/${id}`, getAuthHeaders())
+    axios.get(`${BASE_URL}/scoresheet/${id}`, getAuthHeaders())
       .then(response => {
         setScoreSheetData(response.data);
       })

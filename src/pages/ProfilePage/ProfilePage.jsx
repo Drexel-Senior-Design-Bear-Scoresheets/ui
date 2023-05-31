@@ -64,7 +64,6 @@ const ProfilePage = () => {
   };
 
   const handleSaveProfile = () => {
-      
       setProfileData(updatedProfileData);
       setEditing(false);
       alert("Changes Saved!")
