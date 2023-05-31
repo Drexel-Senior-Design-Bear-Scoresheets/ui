@@ -1,0 +1,497 @@
+.fade-in {
+  animation: fade-in 0.5s ease;
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+html {
+  margin: 0px;
+  height: 100%;
+  width: 100%;
+  background-size:contain;
+}
+
+body {
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 100% 100%;
+  animation: gradient 15s ease infinite;
+  min-height: 100%;
+  height: 100%;
+}
+
+@keyframes gradient {
+0% {
+  background-position: 0% 50%;
+}
+50% {
+  background-position: 100% 50%;
+}
+100% {
+  background-position: 0% 50%;
+}
+}
+
+
+
+
+.ScoreSheetCreator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  font-family: Arial, sans-serif;
+}
+
+.ScoreSheetCreator p {
+  font-size: 10px;
+  margin: 10px 0;
+}
+
+.ScoreSheetCreator input[type="text"] {
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  width: 300px;
+  margin-bottom: 16px;
+}
+
+.ScoreSheetCreator button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 16px;
+}
+
+.ScoreSheetCreator button:hover {
+  background-color: #3e8e41;
+}
+
+.TextStyle {
+  display: flex;
+  color: black;
+  width: 100px;
+  height: 50px;
+  border-radius: 15px;
+  background-color: white;
+  font-family: "Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif";
+}
+
+.button {
+  margin: 5px;
+  flex-direction: row;
+  margin-left: 20px;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: fit-content;
+  padding: 6px 10px 6px 7px;
+  border-radius: 10px;
+  box-sizing: border-box;
+  color: rgba(255, 255, 255, 1);
+  font-family: "DM Sans, sans-serif";
+  font-weight: 300;
+  font-size: 16px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  line-height: 75%;
+  background-color: rgba(123, 169, 255, 1);
+  box-shadow: 3px 6px 10px rgba(165, 165, 165, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.button:hover {
+  background-color: rgb(89, 147, 255);
+}
+
+.rectangle-1 {
+  width: 403px;
+  height: 71px;
+  background-color: rgba(177, 203, 252, 1);
+}
+
+.first-type {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: rgba(255, 255, 255, 1);
+  font-size: 10px;
+  line-height: 10px;
+  font-family: "Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif";
+  font-weight: 600;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.text-input {
+  width: 20%;
+}
+
+body {
+  background-color: yellow
+}
+.scoresheet-form{
+  margin-top: 10%;
+}
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.scoresheet-form {
+  max-width: 600px;
+  padding: 20px;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+
+.question-section {
+  background-color: #ffffff;
+  border-radius: 4px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.question-section:last-child {
+  margin-bottom: 0;
+}
+
+.fade-in {
+  opacity: 0;
+  animation: fade-in-animation 0.5s forwards;
+}
+
+@keyframes fade-in-animation {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-up-animation {
+  opacity: 0;
+  animation: fade-up-animation 0.5s forwards;
+}
+
+@keyframes fade-up-animation {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.text-input {
+  margin-bottom: 10px;
+}
+
+.questionType {
+  margin-right: 10px;
+}
+
+.button {
+  margin-top: 20px;
+  background-color: #0070c0;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: #005499;
+}
+
+.button:active {
+  background-color: #003c66;
+}
+
+
+.scoresheet-form {
+margin-top: 5%;
+background-color: #f5f5f5;
+border-radius: 8px;
+box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* profile page style */
+
+.profile-card{
+  margin-top: 10%;
+  margin-left: 25%;
+  width: 50%;
+  height: 100%;
+}
+
+.profile-icon{
+margin-left:35%;
+}
+
+.update-profile-button{
+margin-left: 40%;
+}
+
+
+/* landing page styles */
+
+.searchField {
+border-radius: 10px;
+box-sizing: border-box;
+padding-bottom: 1%;
+--terra-search-field-button-box-shadow: 3px 6px 10px rgba(165, 165, 165, 0.25);
+padding-top: 1%;
+}
+
+
+
+p {
+margin: 0;
+}
+
+body {
+background-color: azure;
+
+}
+
+.Home .Homeicon {
+height: 2em; /* Adjust the height value as needed */
+width: 2em; /* Adjust the width value as needed */
+}
+
+
+.Provider .Providericon {
+height: 2em; /* Adjust the height value as needed */
+width: 2em; /* Adjust the width value as needed */
+}
+
+.overflow-wrapper {
+border: 1px dashed rgb(0, 0, 0);
+height: 500px;
+width: 1000px;
+}
+
+.paragraph-x-wrapper {
+  height: 160px;
+  padding-left: 10px;
+  padding-right: 10px;
+  width: 1350px;
+}
+
+.paragraph-y-wrapper {
+padding-left: 10px;
+padding-right: 10px;
+width: 375px;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th,
+.table td {
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+
+.table th {
+  background-color: #f2f2f2;
+  text-align: left;
+}
+
+.table-row:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.table-link {
+  color: blue;
+  text-decoration: underline;
+}
+
+.table-container{
+  width: 70%;
+  background-color: lightgray;
+}
+
+/* start page style */
+.rectangle-title {
+  width: 50vh;
+  height: 20vh;
+  background-color: #0070c0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border-radius: 10px; /* Add border-radius property to make the borders round */
+}
+
+
+.bear-scoresheets {
+  font-size: 36px;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+
+.LogoImage {
+  width: 30vh;
+  height: 30vh;
+  margin-bottom: 20px;
+}
+
+.SignupButton {
+  margin-top: 10px;
+  background-color: #0070c0;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  width: 150px;
+  margin-left: 10px;
+  font-family: "DM Sans, sans-serif";
+}
+
+.LoginButton {
+  margin-top: 10px;
+  background-color: #0070c0;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  width: 150px;
+  margin-left: 10px;
+  font-family: "DM Sans, sans-serif";
+}
+
+/* fillout page style */
+
+.fillout-form {
+  margin-top: 10%;
+  margin-left: 30%;
+  max-width: 600px;
+  padding: 20px;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.fillout-title{
+  font-size: 36px;
+  font-weight: bold;
+  color: #333333;
+  margin-bottom: 20px;
+}
+
+.fillout-info{
+  font-size: 24px;
+  font-weight: bold;
+  color: #333333;
+  margin-bottom: 20px;
+
+}
+
+.fillout-ref{
+  font-size: 24px;
+  font-weight: bold;
+  color: #333333;
+  margin-bottom: 20px;
+  
+}
+
+.fillout-question-text{
+  font-size: 24px;
+  font-family:'Courier New', Courier, monospace;
+  font-weight: bold;
+  color: #333333;
+  margin-bottom: 20px;
+}
+
+.checkbox-label {
+  display: inline-flex;
+  align-items: center;
+  font-size:medium;
+}
+
+.checkbox-input {
+  margin-right: 5px;
+  width: 20px;
+  height: 20px;
+}
+
+.checkbox-container {
+  display: inline-flex;
+  align-items: center;
+}
+
+.radio-label {
+  display: inline-flex;
+  align-items: center;
+  font-size:medium;
+}
+
+.radio-container {
+  display: inline-flex;
+  align-items: center;
+}
+
+/* signup form */
+
+.signup-form {
+  margin-top: 5%;
+  margin-left: 30%;
+  max-width: 600px;
+  padding: 20px;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* sign in form */
+.signin-form {
+  margin-top: 5%;
+  max-width: 600px;
+  padding: 20px;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+
+
+
+
+
+
+
+
+
+
+
